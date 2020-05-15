@@ -46,16 +46,37 @@ class LinkedList:
 
         temp.next_node = node
 
+    def pop(self):
+        if self.head is None:
+            return "Nothing in here"
+
+        if self.head.next_node is None:
+            self.head = None
+            return
+
+        curr = self.head
+
+        while curr.next_node:
+            prev = curr
+            curr = curr.next_node
+
+        prev.next_node = None
 
 mylist = LinkedList()
 mylist.unshift(50)
+mylist.unshift(60)
+# print(mylist.head.value)
+mylist.pop()
+mylist.pop()
+print(mylist.head)
 # print(mylist.head.value)
 # print(mylist.head.value)
-mylist.push(12)
-mylist.shift()
-mylist.shift()
-mylist.push(70)
-print(mylist.head.get_value())
+# mylist.push(12)
+# mylist.shift()
+# mylist.shift()
+# mylist.push(70)
+# print(mylist.pop())
+# print(mylist.head.get_value())
 # print(mylist.head.next_node.value)
 # print(mylist.tail)
 # mylist.unshift(12)
