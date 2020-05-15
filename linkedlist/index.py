@@ -34,12 +34,28 @@ class LinkedList:
         self.head = None
         self.head = temp.next_node 
 
+    def push(self, value):
+        node = Node(value)
+        if self.head is None:
+            self.head = node
+            return 
+
+        temp = self.head
+        while temp.next_node is not None:
+            temp = temp.next_node 
+
+        temp.next_node = node
+
+
 mylist = LinkedList()
 mylist.unshift(50)
-mylist.unshift(60)
-print(mylist.head.value)
+# print(mylist.head.value)
+# print(mylist.head.value)
+mylist.push(12)
 mylist.shift()
-print(mylist.head.value)
+mylist.shift()
+mylist.push(70)
+print(mylist.head.get_value())
 # print(mylist.head.next_node.value)
 # print(mylist.tail)
 # mylist.unshift(12)
