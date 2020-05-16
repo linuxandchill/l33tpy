@@ -1,7 +1,8 @@
 def bubble(arr):
     """Sorts an array"""
     swap = None;
-    for i in range(len(arr)):
+    for i in range(0, len(arr)):
+        print(i)
         # for j in range(0, i < i - 1):
         for j in range(0, len(arr)-i-1): 
             #   # traverse the array from 0 to n-i-1 
@@ -13,7 +14,7 @@ def bubble(arr):
                 arr[j+1] = temp
     return arr
 
-# print(bubble([2,7,4,56,2]))
+print(bubble([2,7,4,56,2]))
 
     # n = len(arr) 
   
