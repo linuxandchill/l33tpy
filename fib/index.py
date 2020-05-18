@@ -17,4 +17,4 @@ def fib(n):
     
 
 
-print(fib(70))
+print(fib(700))
