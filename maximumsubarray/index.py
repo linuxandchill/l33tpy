@@ -4,8 +4,8 @@ def main(arr):
     maxsum = arr[0]
 
     for i in range(1, len(arr)):
-        current = max(arr[i], current + arr[i])
-        maxsum = max(current, maxsum)
+        current = max(arr[i], current + arr[0])
+        maxsum = max(maxsum, current)
 
     return maxsum
 

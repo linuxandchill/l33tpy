@@ -9,23 +9,24 @@ def findAnagrams(s: str, p: str) -> List[int]:
     if slen < plen:
         return []
 
-    p_lookup = Counter(p)
-    temp_lookup = Counter()
+    plookup = Counter(p)
+    templookup = Counter()
 
     for i in range(slen):
-        temp_lookup[s[i]] += 1
+        templookup[s[i]] += 1
 
         if i >= plen:
-            if temp_lookup[s[i - plen]] == 1:
-                del temp_lookup[s[i - plen]]
+            if templookup[s[i - plen]] == 1:
+                del templookup[s[i - plen]]
             else:
-                temp_lookup[s[i - plen]] -= 1
+                templookup[s[i - plen]] -= 1
 
-        if p_lookup == temp_lookup:
+        if plookup == templookup:
             final.append(i - plen + 1)
 
-
     return final
+
+
 
 
 
