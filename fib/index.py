@@ -2,6 +2,9 @@
 cache = {}
 
 def fib(n):
+    if n <= 0:
+        raise ValueError('Function accepts positive N position')
+
     if n in cache:
         return cache[n]
 
@@ -17,4 +20,4 @@ def fib(n):
     
 
 
-print(fib(700))
+print(fib(0))

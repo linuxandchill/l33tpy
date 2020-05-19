@@ -1,29 +1,27 @@
 from collections import Counter
 
-
 def checkInclusion(s1: str, s2: str) -> bool:
-    if len(s1) > len(s2):
+    if len(s2) < len(s1):
         return False
 
     window_length = len(s1)
-    main_counter = Counter(s1)
-    window_counter = Counter()
+    main_lookup = Counter(s1)
+    temp_lookup = Counter()
 
     for i, char in enumerate(s2):
-        window_counter[char] += 1
+        temp_lookup[char] += 1
 
-        if i >= window_length:
-            left = s2[i - window_length]
+        if i >= len(s1):
+            left = s2[i - len(s1)]
 
-            if window_counter[left] == 1:
-                del window_counter[left]
+            if temp_lookup[left] == 1:
+                del temp_lookup[left]
             else:
-                window_counter[left] -= 1
+                temp_lookup[left] -= 1
 
-        if window_counter == main_counter:
+        if temp_lookup == main_lookup:
             return True
-
+        
     return False
-
 
 print(checkInclusion("ab", "eidbaooo"))
