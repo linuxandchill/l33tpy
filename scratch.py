@@ -7,17 +7,16 @@ def scratch(x):
 # assert 12 == 13
 
 def countdown(n):
-	if n <= 0:             
-		return n
+	if n <= 0:
+		return
 
-	print(n)
 	n -= 1
-	countdown(n)
+	countdown(n-1)
 
 def countup(n):
-    if n >= 0:
-        countup(n - 1)
-        print(n)
+	if n >= 0:
+		countup(n-1)
+		print(n)
 
 
 countup(10)
