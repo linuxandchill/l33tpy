@@ -2,15 +2,15 @@ from collections import Counter
 
 def frequencySort(s: str) -> str:
     counter = Counter(list(s))
-    final = ''
-    s = sorted(counter, reverse=True, key=lambda item: counter[item]) 
+    final = ""
 
-    for i in range(0, len(s)):
-        print(s[i])
-        final += s[i] * counter[s[i]]
+    s = sorted(counter, key=lambda x: counter[x], reverse=True)
+
+    for letter in s:
+        final += (letter * counter[letter])
 
     return final
 
 
 
-frequencySort("cccaaa")
+print(frequencySort("ccAAAAAbbbbbbbbaa"))

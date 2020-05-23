@@ -23,8 +23,7 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 
 		# filter out weak detections by ensuring the confidence is
 		# greater than the minimum confidence
-		# if confidence > args["confidence"]:
-		if confidence > 0.5:
+		if confidence > args["confidence"]:
 			# compute the (x, y)-coordinates of the bounding box for
 			# the object
 			box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
@@ -59,6 +58,7 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 	# return a 2-tuple of the face locations and their corresponding
 	# locations
 	return (locs, preds)
+
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -100,20 +100,18 @@ while True:
 	# grab the frame from the threaded video stream and resize it
 	# to have a maximum width of 400 pixels
 	(grabbed, frame) = vs.read()
-    if frame is None:
-        break
+  if frame is None:
+    break
 
-	frame = imutils.resize(frame, width=400)
+  frame = imutils.resize(frame, width=400)
 
 	# detect faces in the frame and determine if they are wearing a
 	# face mask or not
 	(locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
 
-    # if args["output"] is not None and writer is None:
-    if writer is None:
-        fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-        writer = cv2.VideoWriter(args["output"], fourcc, 30,
-            (frame.shape[1], frame.shape[0]), True)
+  if args["output"] is not None and writer is None:
+    fourcc = cv2.VideoWriter_fourcc(*"MJPG")
+    writer = cv2.VideoWriter(args["output"], fourcc, 30, (frame.shape[1], frame.shape[0]), True)
 
 	# loop over the detected face locations and their corresponding
 	# locations
